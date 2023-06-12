@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import Images from '../components/images'
 import styles from '../styles/create.module.css'
+import 'animate.css';
 
 const CreatePostcard = () => {
 
@@ -14,14 +15,28 @@ const CreatePostcard = () => {
 
     const [ showPreview, setShowPreview ] = useState(false)
 
-    console.log(nameRef.current)
-    
+    const [ selectedImage, setSelectedImage ] = useState(null)
+    const [ isFlipAround, setIsFlipAround ] = useState(false)
+
+    const [ animName, setAnimName] = useState('')
+
+    let flipTimeout;
+    const flipCard = () => {
+        clearTimeout(flipTimeout)
+        setAnimName('animate__flipInY')
+        setIsFlipAround(!isFlipAround)
+        flipTimeout = setTimeout(() => {
+            setAnimName('')
+        }, 500);
+    }
+
+    console.log(animName)
 
     return (
         <main className={styles.container}>
             <div className={styles.images}>
                 <h3 style={{textAlign: 'center'}}>Choose an image for your postcard</h3>
-                <Images />
+                <Images setSelectedImage={setSelectedImage} />
             </div>
             {
                 !showPreview ?
@@ -37,14 +52,22 @@ const CreatePostcard = () => {
                     :
                     <div className={styles.form}>
                         <h3 style={{textAlign: 'center'}}>Write your postcard message</h3>
-                        <div className={styles.preview}>
-                            <p>From: {name}</p>
-                            <p>In: {place}</p>
-                            <br />
-                            <p>Message: {message}</p>
+                        <div className={`${styles.preview} animate__animated ${animName}`}>
+                            {
+                                !isFlipAround ?
+                                <>
+                                    <p>From: {name}</p>
+                                    <p>In: {place}</p>
+                                    <br />
+                                    <p>Message: {message}</p>
+                                </>
+                                :
+                                selectedImage ? <img src={selectedImage} alt='postcard' /> : <p>Choose an image for your postcard</p>
+                            }
                         </div>
                         <div className={styles['preview-buttons']}>
-                            <button onClick={() => setShowPreview(false)}>Continue editing</button>
+                            <button onClick={() => setShowPreview(false)}>Back to editing</button>
+                            <button onClick={() => flipCard()}>Flip around</button>
                             <button>Save and download</button>
                         </div>
                     </div>

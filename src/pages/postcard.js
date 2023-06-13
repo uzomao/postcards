@@ -17,7 +17,7 @@ const Postcard = () => {
             display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'
         },
         viewPostcard: {
-            width: '50%', height: '50%',
+            width: '50%', height: 'fit-content',
             backgroundColor: '#ebd3b3',
             borderRadius: '20px',
             padding: '20px',

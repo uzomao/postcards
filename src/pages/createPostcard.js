@@ -88,19 +88,19 @@ const CreatePostcard = () => {
                         :
                         <div className={styles.form}>
                             <h3 style={{textAlign: 'center'}}>Write your postcard message</h3>
-                            <div className={`${styles.preview} animate__animated ${animName}`}>
-                                {
-                                    !isFlipAround ?
-                                    <>
+                            <>
+                            {
+                                !isFlipAround ?
+                                    <div className={`${styles.preview} animate__animated ${animName}`}>
                                         <p>From: {name}</p>
                                         <p>In: {place}</p>
                                         <br />
                                         <p>Message: {message}</p>
-                                    </>
-                                    :
-                                    selectedImage ? <img src={selectedImage} alt='postcard' /> : <p>Your image shows here</p>
-                                }
-                            </div>
+                                    </div>
+                                :
+                                selectedImage ? <div className={`${styles.preview} ${styles['preview-image']} animate__animated ${animName}`} style={{backgroundImage: `url(${selectedImage})`}}></div> : <div className={`${styles.preview} animate__animated ${animName}`}><p>Your image shows here</p></div>
+                            }
+                            </>
                             <div className={styles['preview-buttons']}>
                                 <button onClick={() => setShowPreview(false)}>Back to writing</button>
                                 <button onClick={() => flipCard()}>Flip around</button>

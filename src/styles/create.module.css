@@ -41,7 +41,7 @@ input, textarea {
 
 .form .preview {
     margin-left: 10%;
-    height: 500px;
+    height: 400px;
     /* background: url('../images/pc-background.jpg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -76,4 +76,10 @@ input, textarea {
     margin-left: 2.5%;
     padding: 10px;
     border-radius: 2px;
+}
+
+.preview-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }

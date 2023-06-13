@@ -35,3 +35,28 @@ button, .button {
 button:hover, .button:hover {
   filter: brightness(0.9);
 }
+
+body {
+  background: linear-gradient(270deg, #ffffff, #d4d1f7, #f7e5f6, #eceed2);
+  background-size: 800% 800%;
+
+  -webkit-animation: Vibes 46s ease infinite;
+  -moz-animation: Vibes 46s ease infinite;
+  animation: Vibes 46s ease infinite;
+}
+
+@-webkit-keyframes Vibes {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes Vibes {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes Vibes {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}

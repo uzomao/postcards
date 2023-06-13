@@ -13,7 +13,7 @@ const Index = () => {
         .from('postcards')
         .select('*')
         if(error) {console.log(error)}
-        else { setPostcards(postcards)}
+        else { setPostcards(postcards.reverse())}
     }
 
     useEffect(() => {

@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-input {
+input, textarea {
     outline: none;
     border: 1px solid #222;
     border-radius: 5px;
@@ -27,12 +27,12 @@ input {
     padding: 5px;
 }
 
-.form-content input {
+.form-content input, .form-content textarea {
     width: 80%;
     margin: 1em 0;
 }
 
-.form-content input[type="textarea"] {
+.form-content textarea {
     min-height: 200px;
 }
 

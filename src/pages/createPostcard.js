@@ -45,7 +45,7 @@ const CreatePostcard = () => {
                         <div className={styles['form-content']}>
                             <input type="text" placeholder='Your name here...' ref={nameRef} value={name} onChange={() => setName(nameRef.current.value)} />
                             <input type="text" placeholder="Where you're writing from..." ref={placeRef} value={place} onChange={() => setPlace(placeRef.current.value)} />
-                            <input type="textarea" placeholder="Your message to a friend, a loved one or your present self..." ref={messageRef} value={message} onChange={() => setMessage(messageRef.current.value)} />
+                            <textarea placeholder="Your message to a friend, a loved one or your present self..." ref={messageRef} value={message} onChange={() => setMessage(messageRef.current.value)} />
                             <button style={{alignSelf: 'flex-start', marginLeft: '10%'}} onClick={() => setShowPreview(true)}>Preview Postcard</button>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const CreatePostcard = () => {
                             }
                         </div>
                         <div className={styles['preview-buttons']}>
-                            <button onClick={() => setShowPreview(false)}>Back to editing</button>
+                            <button onClick={() => setShowPreview(false)}>Back to writing</button>
                             <button onClick={() => flipCard()}>Flip around</button>
                             <button>Save and download</button>
                         </div>

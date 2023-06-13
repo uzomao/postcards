@@ -17,3 +17,21 @@ code {
   text-align: center;
 }
 
+button, .button {
+  background: #ccc;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: none;
+  padding: 10px;
+}
+
+.button {
+  text-decoration: none;
+  color: inherit
+}
+
+button:hover, .button:hover {
+  filter: brightness(0.9);
+}

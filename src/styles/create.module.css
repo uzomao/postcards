@@ -1,6 +1,7 @@
 .container {
     width: 100;
     display: flex;
+    margin-top: 2rem;
 }
 
 .images {
@@ -60,4 +61,17 @@ input, textarea {
 
 .preview-buttons button {
     margin: 2.5%
+}
+
+.is-saved {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+    background: #73ea4a;
+    color: #fff;
+    text-align: center;
+    width: 90%;
+    margin-left: 2.5%;
+    padding: 10px;
+    border-radius: 2px;
 }

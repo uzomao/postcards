@@ -3,7 +3,7 @@ import Images from '../components/images'
 import styles from '../styles/create.module.css'
 import 'animate.css';
 import { supabase } from '../supabase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreatePostcard = () => {
 
@@ -19,6 +19,9 @@ const CreatePostcard = () => {
 
     const [ selectedImage, setSelectedImage ] = useState(null)
     const [ isFlipAround, setIsFlipAround ] = useState(false)
+
+    const [ isSaved, setIsSaved ] = useState(false)
+    const navigate = useNavigate()
 
     const [ animName, setAnimName] = useState('')
 
@@ -41,6 +44,7 @@ const CreatePostcard = () => {
         return true
     }
 
+    let navigateTimeout;
     const savePostcard = async () => {
 
         if(checkSubmission()){
@@ -52,13 +56,19 @@ const CreatePostcard = () => {
             if(error) console.log(error)
             else {
                 console.log('Postcard submitted successfully ', data)
+                setIsSaved(true)
+                clearTimeout(navigateTimeout)
+                navigateTimeout = setTimeout(() => {
+                    navigate('/')
+                }, 1500);
             }
         }
     }
 
     return (
         <div>
-            <Link to='/'>Home</Link>
+            <Link to='/' className='button'>Home</Link>
+            { isSaved && <p className={styles['is-saved']}>Your postcard has been saved successfully</p>}
             <div className={styles.container}>
                 <div className={styles.images}>
                     <h3 style={{textAlign: 'center'}}>Choose an image for your postcard</h3>
@@ -88,7 +98,7 @@ const CreatePostcard = () => {
                                         <p>Message: {message}</p>
                                     </>
                                     :
-                                    selectedImage ? <img src={selectedImage} alt='postcard' /> : <p>Choose an image for your postcard</p>
+                                    selectedImage ? <img src={selectedImage} alt='postcard' /> : <p>Your image shows here</p>
                                 }
                             </div>
                             <div className={styles['preview-buttons']}>

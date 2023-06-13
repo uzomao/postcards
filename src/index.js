@@ -10,6 +10,7 @@ import {
 
 import Index from './pages';
 import CreatePostcard from './pages/createPostcard';
+import Postcard from './pages/postcard'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "create",
     element: <CreatePostcard />
+  },
+  {
+    path: "/postcard/:id",
+    element: <Postcard />
   }
 ]);
 

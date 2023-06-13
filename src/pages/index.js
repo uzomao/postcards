@@ -22,8 +22,6 @@ const Index = () => {
     
       return () => {}
     }, [])
-    
-    const [ viewPostcard, setViewPostcard ] = useState(null)
 
     return (
         <div>
@@ -34,7 +32,7 @@ const Index = () => {
                     <p>Loading...</p>
                     :
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        { postcards.map((postcard, index) => <Postcard postcard={postcard} viewPostcard={viewPostcard} setViewPostcard={setViewPostcard} />) }
+                        { postcards.map((postcard) => <Postcard postcard={postcard} />) }
                     </div>
             }
         </div>

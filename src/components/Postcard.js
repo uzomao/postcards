@@ -9,10 +9,11 @@ const Postcard = ({ postcard, viewPostcard, setViewPostcard }) => {
     const styles = {
         container: {
             display: 'flex',
-            width: '100%',
+            width: '30%',
+            margin: '0 1.5%'
         },
         postcardContainer: {
-            width: '33.3%',
+            width: '100%',
             margin: '2rem 0'
         },
         postcard: {

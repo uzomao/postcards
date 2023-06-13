@@ -33,7 +33,9 @@ const Index = () => {
                 !postcards ?
                     <p>Loading...</p>
                     :
-                    postcards.map((postcard, index) => <Postcard postcard={postcard} viewPostcard={viewPostcard} setViewPostcard={setViewPostcard} />)
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        { postcards.map((postcard, index) => <Postcard postcard={postcard} viewPostcard={viewPostcard} setViewPostcard={setViewPostcard} />) }
+                    </div>
             }
         </div>
     )

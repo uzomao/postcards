@@ -57,8 +57,7 @@ const CreatePostcard = () => {
             else {
                 console.log('Postcard submitted successfully ', data)
                 setIsSaved(true)
-                download('postcard-preview')
-                // download('postcard-preview-download')
+                // download('postcard-preview')
                 clearTimeout(navigateTimeout)
                 navigateTimeout = setTimeout(() => {
                     navigate('/')
@@ -67,24 +66,24 @@ const CreatePostcard = () => {
         }
     }
 
-    const download = async (elementId) => {
-        const element = document.getElementById(elementId)
-        const canvas = await html2canvas(element)
-        const image = canvas.toDataURL('image/jpg')
-        const fileName = 'postcard.jpg'
+    // const download = async (elementId) => {
+    //     const element = document.getElementById(elementId)
+    //     const canvas = await html2canvas(element)
+    //     const image = canvas.toDataURL('image/jpg')
+    //     const fileName = 'postcard.jpg'
 
-        const fakeLink = window.document.createElement("a");
-        fakeLink.style = "display:none;";
-        fakeLink.download = fileName;
+    //     const fakeLink = window.document.createElement("a");
+    //     fakeLink.style = "display:none;";
+    //     fakeLink.download = fileName;
 
-        fakeLink.href = image;
+    //     fakeLink.href = image;
 
-        document.body.appendChild(fakeLink);
-        fakeLink.click();
-        document.body.removeChild(fakeLink);
+    //     document.body.appendChild(fakeLink);
+    //     fakeLink.click();
+    //     document.body.removeChild(fakeLink);
 
-        fakeLink.remove();
-    }
+    //     fakeLink.remove();
+    // }
 
     return (
         <div>
@@ -125,7 +124,7 @@ const CreatePostcard = () => {
                             <div className={styles['preview-buttons']}>
                                 <button onClick={() => setShowPreview(false)}>Back to writing</button>
                                 <button onClick={() => flipCard()}>Flip around</button>
-                                <button onClick={() => savePostcard()}>Save and download</button>
+                                <button onClick={() => savePostcard()}>Save postcard</button>
                             </div>
                         </div>
                 }

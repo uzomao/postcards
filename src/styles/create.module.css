@@ -26,6 +26,8 @@ input, textarea {
     border-radius: 5px;
     min-height: 20px;
     padding: 5px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 18px;
 }
 
 .form-content input, .form-content textarea {

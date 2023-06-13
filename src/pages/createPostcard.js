@@ -4,6 +4,7 @@ import styles from '../styles/create.module.css'
 import 'animate.css';
 import { supabase } from '../supabase';
 import { Link, useNavigate } from 'react-router-dom';
+import html2canvas from "html2canvas"
 
 const CreatePostcard = () => {
 
@@ -46,7 +47,6 @@ const CreatePostcard = () => {
 
     let navigateTimeout;
     const savePostcard = async () => {
-
         if(checkSubmission()){
             console.log('submitting...')
             const { data, error } = await supabase
@@ -57,12 +57,33 @@ const CreatePostcard = () => {
             else {
                 console.log('Postcard submitted successfully ', data)
                 setIsSaved(true)
+                download('postcard-preview')
+                // download('postcard-preview-download')
                 clearTimeout(navigateTimeout)
                 navigateTimeout = setTimeout(() => {
                     navigate('/')
                 }, 1500);
             }
         }
+    }
+
+    const download = async (elementId) => {
+        const element = document.getElementById(elementId)
+        const canvas = await html2canvas(element)
+        const image = canvas.toDataURL('image/jpg')
+        const fileName = 'postcard.jpg'
+
+        const fakeLink = window.document.createElement("a");
+        fakeLink.style = "display:none;";
+        fakeLink.download = fileName;
+
+        fakeLink.href = image;
+
+        document.body.appendChild(fakeLink);
+        fakeLink.click();
+        document.body.removeChild(fakeLink);
+
+        fakeLink.remove();
     }
 
     return (
@@ -91,7 +112,7 @@ const CreatePostcard = () => {
                             <>
                             {
                                 !isFlipAround ?
-                                    <div className={`${styles.preview} animate__animated ${animName}`}>
+                                    <div className={`${styles.preview} animate__animated ${animName}`} id='postcard-preview'>
                                         <p>From: {name}</p>
                                         <p>In: {place}</p>
                                         <br />

@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 const Postcard = () => {
 
     let { state } = useLocation()
-    const { name, place, message } = state.postcard
+    const { name, place, message, title } = state.postcard
 
     const styles = {
         modalContainer: {
@@ -14,7 +14,7 @@ const Postcard = () => {
             top: '0', left: '0',
             background: '#fff',
             opacity: '0.95',
-            display: 'flex', justifyContent: 'center', alignItems: 'center'
+            display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'
         },
         viewPostcard: {
             width: '50%', height: '50%',
@@ -22,19 +22,21 @@ const Postcard = () => {
             borderRadius: '20px',
             padding: '20px',
             zIndex: '9',
-            opacity: '1'
+            opacity: '1',
+            fontSize: '18px'
         },
         closeBtn: {
             position: 'relative',
             left: '100%',
             top: '-10%',
             fontSize: '24px',
-            color: 'red', cursor: 'pointer'
+            color: 'red', cursor: 'pointer',
         },
     }
 
   return (
         <div style={styles.modalContainer}>
+            <h1 className='center-text'>{title}</h1>
             <div style={styles.viewPostcard}>
                 <Link to='/'>
                     <FaTimesCircle style={styles.closeBtn} />

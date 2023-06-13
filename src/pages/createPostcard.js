@@ -4,11 +4,12 @@ import styles from '../styles/create.module.css'
 import 'animate.css';
 import { supabase } from '../supabase';
 import { Link, useNavigate } from 'react-router-dom';
-import html2canvas from "html2canvas"
+// import html2canvas from "html2canvas"
 
 const CreatePostcard = () => {
 
     const nameRef = useRef(null)
+    const titleRef = useRef(null)
     const placeRef = useRef(null)
     const messageRef = useRef(null)
     const imageUrlRef = useRef(null)
@@ -16,6 +17,7 @@ const CreatePostcard = () => {
     const [name, setName] = useState('')
     const [place, setPlace] = useState('')
     const [message, setMessage] = useState('')
+    const [title, setTitle] = useState('')
 
     const [ showPreview, setShowPreview ] = useState(false)
 
@@ -53,7 +55,7 @@ const CreatePostcard = () => {
             const { data, error } = await supabase
             .from('postcards')
             .insert([
-            { name, place, message, image: selectedImage }])
+            { name, place, message, title, image: selectedImage }])
             if(error) console.log(error)
             else {
                 console.log('Postcard submitted successfully ', data)
@@ -103,6 +105,7 @@ const CreatePostcard = () => {
                             <div className={styles['form-content']}>
                                 { selectedImage && <img src={selectedImage} style={{height: '100px', width: '100px'}} alt='selected postcard' />}
                                 <input type="text" placeholder='Your name here...' ref={nameRef} value={name} onChange={() => setName(nameRef.current.value)} />
+                                <input type="text" placeholder="Title of your postcard" ref={titleRef} value={title} onChange={() => setTitle(titleRef.current.value)} />
                                 <input type="text" placeholder="Where you're writing from..." ref={placeRef} value={place} onChange={() => setPlace(placeRef.current.value)} />
                                 <textarea placeholder="Your message to a friend, a loved one or your present self..." ref={messageRef} value={message} onChange={() => setMessage(messageRef.current.value)} />
                                 <button style={{alignSelf: 'flex-start', marginLeft: '10%'}} onClick={() => setShowPreview(true)}>Preview Postcard</button>
@@ -115,6 +118,7 @@ const CreatePostcard = () => {
                             {
                                 !isFlipAround ?
                                     <div className={`${styles.preview} animate__animated ${animName}`} id='postcard-preview'>
+                                        <p>{title}</p>
                                         <p>From: {name}</p>
                                         <p>In: {place}</p>
                                         <br />

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Postcard = ({ postcard }) => {
 
-    const { id, name, place, image } = postcard
-    console.log(postcard)
+    const { id, name, title, place, image } = postcard
 
     const styles = {
         container: {
@@ -43,6 +42,7 @@ const Postcard = ({ postcard }) => {
                     <div style={styles.postcard}>
                     </div>
                     <p style={{textAlign: 'center'}}>{name}, {place}</p>
+                    <p className='center-text' style={{fontSize: '21px'}}>{title}</p>
                 </div>
             </Link>
         </div>

@@ -11,6 +11,7 @@ const CreatePostcard = () => {
     const nameRef = useRef(null)
     const placeRef = useRef(null)
     const messageRef = useRef(null)
+    const imageUrlRef = useRef(null)
 
     const [name, setName] = useState('')
     const [place, setPlace] = useState('')
@@ -92,6 +93,7 @@ const CreatePostcard = () => {
             <div className={styles.container}>
                 <div className={styles.images}>
                     <h3 style={{textAlign: 'center'}}>Choose an image for your postcard</h3>
+                    <input type="text" placeholder="Enter image Url" ref={imageUrlRef} onChange={() => setSelectedImage(imageUrlRef.current.value)} style={{width: '95%'}} />
                     <Images setSelectedImage={setSelectedImage} />
                 </div>
                 {
@@ -99,6 +101,7 @@ const CreatePostcard = () => {
                         <div className={styles.form}>
                             <h3 style={{textAlign: 'center'}}>Write your postcard message</h3>
                             <div className={styles['form-content']}>
+                                { selectedImage && <img src={selectedImage} style={{height: '100px', width: '100px'}} alt='selected postcard' />}
                                 <input type="text" placeholder='Your name here...' ref={nameRef} value={name} onChange={() => setName(nameRef.current.value)} />
                                 <input type="text" placeholder="Where you're writing from..." ref={placeRef} value={place} onChange={() => setPlace(placeRef.current.value)} />
                                 <textarea placeholder="Your message to a friend, a loved one or your present self..." ref={messageRef} value={message} onChange={() => setMessage(messageRef.current.value)} />
